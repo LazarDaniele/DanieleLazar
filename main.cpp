@@ -1,52 +1,44 @@
+
 #include <iostream>
 #include <cstdlib>
-#include <stdlib.h>
-#include <time.h>
-
-/* Punto 1 del libro
--dare la scelta di quanti bits trasmettere (da 8 a 32)
--generare uans sequenza random di bits da trasmettere
--stampare i dati origianli e il polinomio M(x) */
-
+#include <ctime>
 using namespace std;
-int main() {
- int numerobits, c;
- int bit[numerobits];
- cout<<"inserire quanti bits da trasmettere (8 a 32) :";
- cin>>numerobits;
- cout<<"numero di bits:  "<<numerobits<<endl;
- 
- for(int i=0; i<numerobits; i++){
- 	int c=rand() % 2;
- 	cout<<c;
+
+
+void stampa_vettore(int h, int array[]){
+for(int i=0; i<h; i++){
+cout<<"\n\nCasella ["<<i<<"] :";
+cout<<array[i];
+}
+}
+
+int main(){
+int g=20;
+int min;
+int tmp;
+int vettore[g];
+for(int i=0; i<g; i++){
+vettore[i]=(rand()%20)+0;
+}
+srand((unsigned)time(0));
+stampa_vettore(g, vettore);
+
+//Ordinamento BubbleSort
+for (int j = 0; j < g; j++ )
+{
+
+for (int i=g-1; i>=j; i--)
+ {
+ if (vettore[i]>vettore[i+1])
+   {
+   tmp = vettore[i];
+   vettore[i] = vettore[i+1];
+   vettore[i+1] = tmp;
+   }
  }
- 
- int m=4;
-int gx[m];
-gx[0]=1;
-gx[1]=1;
-gx[2]=0;
-gx[3]=1;
 
-
- cout<<"\n\nmx: ";
-for(int i=m; i>0; i--){
-	if (gx[i-1]==1){
-		cout<<"x^"<<i-1<<"+";
 }
+cout<<"\n\n-------------BUBBLE SORT--------------\n\n";
+stampa_vettore(g, vettore);
 
-for(int i=0, h=m; i<numerobits; i++, h--){
-	if(h==0){
-		h=4;
-	}
-	if(bit[i] == gx[h]){
-		bit[i] = 0;
-
-
-
-
-	}
-}
-
-	}
 }
